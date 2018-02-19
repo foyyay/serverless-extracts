@@ -1,9 +1,8 @@
 {
   "name": "serverless-extracts",
   "version": "0.0.0",
-  "description":
-    "A collection of the little bits and bobs I find myself writing over and over as I work with the serverless framework.",
-  "main": "index.js",
+  "description": "A collection of the little bits and bobs I find myself writing over and over as I work with the serverless framework.",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,11 +10,16 @@
     "type": "git",
     "url": "git@github.com:tsdorsey/serverless-extracts.git"
   },
-  "keywords": ["serverless"],
+  "keywords": [
+    "serverless"
+  ],
   "author": "Trevor Dorsey <trevor@foyyay.com> (https://www.foyyay.com)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/tsdorsey/serverless-extracts/issues"
   },
-  "homepage": "https://github.com/tsdorsey/serverless-extracts#readme"
+  "homepage": "https://github.com/tsdorsey/serverless-extracts#readme",
+  "dependencies": {
+    "uuid-to-hex": "^1.0.3"
+  }
 }
