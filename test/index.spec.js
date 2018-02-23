@@ -12,6 +12,11 @@ describe('Generating a prefixed key', () => {
       expect(prefixedKey()).to.match(/^[0-9a-z]{32}$/);
     });
   });
+  describe('when I pass and empty string', () => {
+    it('should return a key with an empty prefix', () => {
+      expect(prefixedKey('')).to.match(/^_[0-9a-z]{32}$/);
+    });
+  });
   describe('when I pass a prefix', () => {
     it('should return a key with the prefix', () => {
       expect(prefixedKey('TeST')).to.match(/^TeST_[0-9a-z]{32}$/);
