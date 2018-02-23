@@ -1,6 +1,10 @@
 import uuid from 'uuid';
 import uuidToHex from 'uuid-to-hex';
 
+function uuidV4Hex() {
+  return uuidToHex(uuid.v4());
+}
+
 export function prefixedKey(prefix, join = '_', generator = uuidV4Hex) {
   let key = generator();
 
@@ -11,6 +15,9 @@ export function prefixedKey(prefix, join = '_', generator = uuidV4Hex) {
   return [prefix, key].join(join);
 }
 
-function uuidV4Hex() {
-  return uuidToHex(uud.v4());
+export function validEmail(address) {
+  // eslint-disable-next-line
+  const re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+  return re.test(address);
 }

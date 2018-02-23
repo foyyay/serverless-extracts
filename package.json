@@ -2,9 +2,12 @@
   "name": "serverless-extracts",
   "version": "0.0.0",
   "description": "A collection of the little bits and bobs I find myself writing over and over as I work with the serverless framework.",
-  "main": "src/index.js",
+  "main": "lib/serverless-extracts.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --env dev && webpack --env build && npm run test",
+    "dev": "webpack --progress --colors --watch --env dev",
+    "test": "mocha --require babel-core/register --colors ./test/*.spec.js",
+    "test:watch": "mocha --require babel-core/register --colors -w ./test/*.spec.js"
   },
   "repository": {
     "type": "git",
@@ -19,7 +22,21 @@
     "url": "https://github.com/tsdorsey/serverless-extracts/issues"
   },
   "homepage": "https://github.com/tsdorsey/serverless-extracts#readme",
-  "dependencies": {
-    "uuid-to-hex": "^1.0.3"
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.3",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-env": "^1.6.1",
+    "chai": "^4.1.2",
+    "eslint": "^4.13.1",
+    "eslint-loader": "^1.9.0",
+    "mocha": "^4.0.1",
+    "uuid": "^3.2.1",
+    "uuid-to-hex": "^1.0.3",
+    "validator": "^9.4.1",
+    "webpack": "^3.10.0",
+    "yargs": "^10.0.3"
   }
 }
