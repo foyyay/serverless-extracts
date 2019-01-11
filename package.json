@@ -1,6 +1,6 @@
 {
   "name": "@foyyay/serverless-extracts",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "A collection of the little bits and bobs I find myself writing over and over as I work with the serverless framework.",
   "main": "lib/index.js",
   "files": [
