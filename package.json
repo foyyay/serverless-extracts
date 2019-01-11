@@ -1,5 +1,5 @@
 {
-  "name": "serverless-extracts",
+  "name": "@foyyay/serverless-extracts",
   "version": "1.0.0",
   "description": "A collection of the little bits and bobs I find myself writing over and over as I work with the serverless framework.",
   "main": "lib/index.js",
