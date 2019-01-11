@@ -40,7 +40,8 @@
     "joi": "14.0.4",
     "lodash": "4.17.11",
     "uuid": "3.3.2",
-    "uuid-to-hex": "1.0.3"
+    "uuid-to-hex": "1.0.3",
+    "yaml": "1.2.0"
   },
   "devDependencies": {
     "@babel/cli": "7.1.2",
