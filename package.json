@@ -7,7 +7,7 @@
     "build": "babel src --out-dir lib",
     "start": "yarn build --watch",
     "lint": "eslint src/",
-    "test": "mocha  \"src/**/*.test.js\" --require @babel/polyfill --require @babel/register --mode development --include test/setup.js"
+    "test": "mocha \"src/**/*.test.js\" --require @babel/polyfill --require @babel/register --require test/setup.js --mode development"
   },
   "repository": {
     "type": "git",
@@ -35,7 +35,6 @@
   "dependencies": {
     "aws-sdk": "2.375.0",
     "deep-filter": "1.0.2",
-    "dynamoose": "1.1.0",
     "hex-to-uuid": "1.0.1",
     "is-plain-object": "2.0.4",
     "joi": "14.0.4",
@@ -54,8 +53,13 @@
     "chai": "4.2.0",
     "chai-as-promised": "7.1.1",
     "dynalite": "2.1.0",
+    "dynamodb-admin": "3.1.0",
+    "dynamoose": "1.1.0",
     "eslint": "5.7.0",
     "mocha": "5.2.0",
     "prettier": "1.14.3"
+  },
+  "peerDependencies": {
+    "dynamoose": ">= 1.1.x < 2"
   }
 }

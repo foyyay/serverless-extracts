@@ -1,5 +1,10 @@
 import deepFilter from 'deep-filter';
 
+export * from './date';
+export * from './email';
+export * from './key';
+export * from './shape';
+
 function notEmpty(value) {
   var key;
 

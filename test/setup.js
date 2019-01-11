@@ -1,30 +1,42 @@
-// const result = require('dotenv').config();
-// if (result.error) {
-//   throw result.error;
-// }
+const chai = require('chai');
+var chaiAsPromised = require('chai-as-promised');
 
-var chai = require('chai');
+chai.use(chaiAsPromised);
 chai.config.includeStack = true;
 
 // Returns a standard Node.js HTTP server
-var dynalite = require('dynalite');
-var dynaliteServer = dynalite({ createTableMs: 0 });
+const dynalite = require('dynalite');
+const dynaliteApp = dynalite({ createTableMs: 0 });
 
 // Listen on port 4567
-var host = 'http://localhost';
-var port = 4567;
-var url = host + ':' + port;
+const dbHost = 'http://localhost';
+const dbPort = 4567;
+const url = dbHost + ':' + dbPort;
+process.env.DYNAMO_ENDPOINT = url;
 
-dynaliteServer
+dynaliteApp
+  .once('listening', () => {
+    console.info('Started Dynalite Server');
+  })
   .once('error', err => {
     if (err.code !== 'EADDRINUSE') {
       throw err;
     }
+    console.warn(`Dynalite dbPort :${dbPort} already in use.`);
   })
-  .listen(port);
+  .listen(dbPort);
 
-var AWS = require('aws-sdk');
+const AWS = require('aws-sdk');
 AWS.config.update({ endpoint: url, sslEnabled: false });
 
-var dynamose = require('dynamoose');
-dynamose.local(url);
+// DynamoDB Admin server.
+const { createServer } = require('dynamodb-admin');
+const adminApp = createServer();
+
+const adminHost = 'http://localhost';
+const adminPort = 8001;
+const adminServer = adminApp.listen(adminPort);
+adminServer.on('listening', () => {
+  const address = adminServer.address();
+  console.info(`  listening on ${adminHost}:${address.port}`);
+});

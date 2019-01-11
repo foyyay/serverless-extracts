@@ -6,7 +6,9 @@ const expect = chai.expect;
 
 describe('Checking valid emails', () => {
   describe('A valid email', () => {
-    expect(isValidEmail('test@domain.com')).to.be.true;
+    it('should be valid', () => {
+      expect(isValidEmail('test@domain.com')).to.be.true;
+    });
   });
   describe('No args', () => {
     it('should not be valid', () => {

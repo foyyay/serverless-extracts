@@ -1,11 +1,15 @@
 import dynamoose from 'dynamoose';
 import { isPrefixedKeyGenerator, prefixedKeyGenerator } from '../data/key';
 
+if (process.env.DYNAMO_ENDPOINT !== undefined) {
+  dynamoose.local(process.env.DYNAMO_ENDPOINT);
+}
+
 let defaultModelOptions = {
   create: true,
-  update: false,
+  update: true,
   waitForActive: true,
-  waitForActiveTimeout: 5 * 1000,
+  waitForActiveTimeout: 2 * 1000,
 };
 
 let defaultSchemaOptions = {
@@ -54,5 +58,13 @@ export function defineEnum(values) {
   return {
     type: String,
     enum: values,
+  };
+}
+
+export function defineGlobalIndex(rangeKey) {
+  return {
+    global: true,
+    rangeKey: rangeKey,
+    project: false,
   };
 }
