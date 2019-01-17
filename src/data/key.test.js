@@ -1,5 +1,11 @@
 import chai from 'chai';
-import { isPrefixedKey, isPrefixedKeyGenerator, prefixedKey, prefixedKeyGenerator } from './key';
+import {
+  isPrefixedKey,
+  isPrefixedKeyGenerator,
+  prefixedKey,
+  prefixedKeyGenerator,
+  prefixOfKey,
+} from './key';
 
 chai.expect();
 const expect = chai.expect;
@@ -109,5 +115,22 @@ describe('Using an isPrefixedKey generator', () => {
     it('should be true for the wildcardChecker', () => {
       expect(wildcardChecker(key)).to.be.true;
     });
+  });
+});
+
+describe('Using prefixOfKey', () => {
+  let prefix = 'test';
+  let key = prefixedKey(prefix);
+
+  it('should pull the prefix on a valid key', () => {
+    expect(prefixOfKey(key)).to.equal(prefix);
+  });
+
+  it('should return undefined for invalid an invalid key', () => {
+    let noPrefix = key.replace(prefix, '');
+    expect(prefixOfKey(noPrefix)).to.not.exist;
+    expect(prefixOfKey('somethi_lkjasdlkfj')).to.not.exist;
+    expect(prefixOfKey('')).to.not.exist;
+    expect(prefixOfKey(undefined)).to.not.exist;
   });
 });

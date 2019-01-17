@@ -43,6 +43,14 @@ export function isPrefixedKey(prefix, value) {
   return true;
 }
 
+export function prefixOfKey(value) {
+  if (!isPrefixedKey(undefined, value)) {
+    return undefined;
+  }
+
+  return value.split(JOIN_ON)[0];
+}
+
 export function prefixedKeyGenerator(prefix) {
   return () => prefixedKey(prefix);
 }
