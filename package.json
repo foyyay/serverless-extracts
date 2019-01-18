@@ -1,5 +1,5 @@
 {
-  "name": "@foyyay/serverless-extracts",
+  "name": "@foyyay/sls-extracts",
   "version": "5.0.0",
   "description": "A collection of the little bits and bobs I find myself writing over and over as I work with the serverless framework.",
   "main": "lib/index.js",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:tsdorsey/serverless-extracts.git"
+    "url": "git@github.com:tsdorsey/sls-extracts.git"
   },
   "keywords": [
     "serverless",
@@ -23,9 +23,9 @@
   "author": "Trevor Dorsey <trevor@foyyay.com> (https://www.foyyay.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tsdorsey/serverless-extracts/issues"
+    "url": "https://github.com/tsdorsey/sls-extracts/issues"
   },
-  "homepage": "https://github.com/tsdorsey/serverless-extracts#readme",
+  "homepage": "https://github.com/tsdorsey/sls-extracts#readme",
   "babel": {
     "plugins": [
       "@babel/plugin-proposal-class-properties",
