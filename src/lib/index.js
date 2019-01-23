@@ -1,3 +1,5 @@
+import { readable } from '../data';
+
 export function compose(...functions) {
   return function(data) {
     return functions.reduceRight((value, func) => func(value), data);
@@ -13,9 +15,13 @@ export function pipe(...functions) {
 export function returnAsJSON() {
   return function returnAsJSONWrapper(func) {
     return async function returnAsJSONWrapped(event, context) {
-      console.log('returnAsJSON received event:', JSON.stringify(event, null, 2));
+      console.log('returnAsJSON received event:', readable(event));
       let result = await func(event, context);
-      console.log('returnAsJSON received result:', JSON.stringify(result, null, 2));
+      console.log('returnAsJSON received result:', readable(result));
+
+      if (result.body !== undefined) {
+        return result;
+      }
 
       return {
         isBase64Encoded: false,
