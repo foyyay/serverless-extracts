@@ -1,6 +1,6 @@
 {
   "name": "@foyyay/sls-extracts",
-  "version": "6.0.0",
+  "version": "7.0.0",
   "description": "A collection of the little bits and bobs I find myself writing over and over as I work with the serverless framework.",
   "main": "lib/index.js",
   "files": [
@@ -8,8 +8,9 @@
   ],
   "scripts": {
     "build": "babel src --out-dir lib",
-    "start": "yarn build --watch",
     "lint": "eslint src/",
+    "prepublishOnly": "npm run build",
+    "start": "yarn build --watch",
     "test": "mocha \"src/**/*.test.js\" --require @babel/polyfill --require @babel/register --require test/setup.js --mode development"
   },
   "repository": {
